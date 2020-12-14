@@ -40,6 +40,7 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
    //Adds event listener to submit button
    formSubmit.addEventListener("click", function(event){
    
+      //validate entries
       if(pilotName.value === ""){
          window.alert("All fields required.")
          event.preventDefault();
@@ -62,6 +63,7 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
 
       })
 
+   //fuel and cargo level check
 function checkValues(){
       if(fuelLevel.value < 10000){
          fuelStatus.innerText = "Not enough fuel for journey."
