@@ -43,6 +43,7 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
       if(pilotName.value === "" || copilotName.value === ""){
          window.alert("All fields required.")
          shuttleNotReady();
+         pilotNotReady();
          event.preventDefault();
          }else{
             pilotStatus.innerText = `Pilot: ${pilotName.value} ready for launch.`
@@ -62,10 +63,9 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
 
       })
 
-   //fuel and cargo level
+   //fuel and then cargo level
 function checkValues(){
       if(fuelLevel.value < 10000){
-         console.log("Fuel Level Issue");
          fuelStatus.innerText = "Not enough fuel for journey."
          shuttleNotReady();
       }else{
@@ -94,5 +94,10 @@ function shuttleNotReady(){
       launchStatus.innerText = "Shuttle not ready for launch."
       faultyItems.style.visibility = "visible";
       event.preventDefault();
+   }
+
+function pilotNotReady(){
+   pilotStatus.innerText = ``
+   copilotStatus.innerText = ``
    }
 })
