@@ -41,18 +41,14 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
    formSubmit.addEventListener("click", function(event){
    
       //validate entries
-      if(pilotName.value === ""){
+      if(pilotName.value === "" || copilotName.value === ""){
          window.alert("All fields required.")
          event.preventDefault();
          }else{
             pilotStatus.innerText = `Pilot: ${pilotName.value} ready for launch.`
+            copilotStatus.innerText = `Co-pilot: ${copilotName.value} ready for launch.`
          }
-      if(pilotName.value === ""){
-         window.alert("All fields are required.")
-         event.preventDefault();
-         }else{
-               copilotStatus.innerText = `Co-pilot: ${copilotName.value} ready for launch.`
-         }   
+    
    //If cargoMass or fuelLevel are not numbers, alert.
       if(isNaN(cargoMass.value) || isNaN(fuelLevel.value) || fuelLevel.value === "" || cargoMass.value === "" ){
          window.alert("Make sure to enter valid information for each field!")
