@@ -1,6 +1,5 @@
 // Write your JavaScript code here!
 
-
 window.addEventListener("load", function(){
    
    //Get form data
@@ -41,14 +40,18 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
    formSubmit.addEventListener("click", function(event){
    
       //validate entries
-      if(pilotName.value === "" || copilotName.value === ""){
+      if(pilotName.value === ""){
          window.alert("All fields required.")
          event.preventDefault();
          }else{
             pilotStatus.innerText = `Pilot: ${pilotName.value} ready for launch.`
-            copilotStatus.innerText = `Co-pilot: ${copilotName.value} ready for launch.`
          }
-    
+      if(pilotName.value === ""){
+         window.alert("All fields are required.")
+         event.preventDefault();
+         }else{
+               copilotStatus.innerText = `Co-pilot: ${copilotName.value} ready for launch.`
+         }   
    //If cargoMass or fuelLevel are not numbers, alert.
       if(isNaN(cargoMass.value) || isNaN(fuelLevel.value) || fuelLevel.value === "" || cargoMass.value === "" ){
          window.alert("Make sure to enter valid information for each field!")
@@ -59,14 +62,18 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
 
       })
 
-   //fuel and cargo level check
+   //fuel and cargo level
 function checkValues(){
       if(fuelLevel.value < 10000){
+         console.log("Fuel Level Issue");
          fuelStatus.innerText = "Not enough fuel for journey."
          shuttleNotReady();
       }else{
-         shuttleReady();
+         checkCargo();
       }
+}
+
+function checkCargo(){
       if(cargoMass.value > 10000){
          cargoStatus.innerText = "Mass too high for shuttle launch."
          shuttleNotReady();
