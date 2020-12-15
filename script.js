@@ -40,11 +40,9 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
    formSubmit.addEventListener("click", function(event){
    
       //validate entries
-      if(pilotName.value === "" || copilotName.value === ""){
+      if(pilotName.value === "" || copilotName.value === ""  || fuelLevel.value === "" || cargoMass.value === "" ){
          window.alert("All fields required.")
-         shuttleNotReady();
-         pilotNotReady();
-         event.preventDefault();
+         preventDefault();
          }else{
             pilotStatus.innerText = `Pilot: ${pilotName.value} ready for launch.`
             copilotStatus.innerText = `Co-pilot: ${copilotName.value} ready for launch.`
@@ -53,7 +51,7 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
    
    //If cargoMass or fuelLevel are not numbers, alert.
    function systemsCheck(){
-      if(isNaN(cargoMass.value) || isNaN(fuelLevel.value) || fuelLevel.value === "" || cargoMass.value === "" ){
+      if(isNaN(cargoMass.value || fuelLevel.value)){
          window.alert("Make sure to enter valid information for each field!")
          event.preventDefault();
          }else{
@@ -96,8 +94,4 @@ function shuttleNotReady(){
       event.preventDefault();
    }
 
-function pilotNotReady(){
-   pilotStatus.innerText = ``
-   copilotStatus.innerText = ``
-   }
 })
